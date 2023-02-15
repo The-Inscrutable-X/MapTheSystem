@@ -11,6 +11,7 @@ usual precedence, although && is still higher in precedence than OR, and presuma
 
 Limit search to 2003-2023.
 """
+import pprint
 from time import sleep
 from scholarly import scholarly
 from search_integration_tools import read_topics_from_file, parse_importance, radial_queries
@@ -22,10 +23,17 @@ with open("out", "w") as f:
         f.write(i + "\n")
 
 print(len(queries))
-responses = scholarly.search_pubs(queries[0])
-for i in range(2):
-    responses = scholarly.search_pubs(queries[0])
+
+"""This section handles getting and storing found publications from google scholar."""
+publications = []
+for i in range(1):
+    response_object = scholarly.search_pubs(queries[i])
+    publications.append(next(response_object))
     sleep(1.23562)
+
+with open("publications.txt", "w") as f:
+    f.write(pprint.format(publications[0]))
+    pass
 # scholarly.pprint(next(responses))
 # scholarly.pprint(next(responses))
 # responses = scholarly.search_pubs(query)
