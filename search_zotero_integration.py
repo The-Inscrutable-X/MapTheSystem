@@ -13,23 +13,29 @@ Limit search to 2003-2023.
 """
 
 from scholarly import scholarly
-from search_integration_tools import read_topics_from_file
+from search_integration_tools import read_topics_from_file, parse_importance, radial_queries
 
-topics = read_topics_from_file("keywords.txt")
-print(*[i+":"+str(topics[i])+"\n" for i in topics])
+print(*radial_queries("keywords_new.txt"), sep="\n")
 
-query = ""
-for i in topics["Mental Health"]:
-    query += "\"" + i + "\""
-    query += "|"
-query = query[:-1] + " AND "
-for i in topics["College"]:
-    query += "\"" + i + "\""
-    query += "|"
-query = query[:-1] + ""
-print(query)
+# topics = read_topics_from_file("keywords_new.txt")
+# print(*[i + ":" + str(topics[i]) + "\n" for i in topics])
+
+# query = ""
+# for i in topics["Mental Health"]:
+#     i, importance = parse_importance(i)
+#     if importance == "important":
+#         query += "\"" + i + "\""
+#         query += "|"
+# query = query[:-1] + " AND "
+# for i in topics["College"]:
+#     i, importance = parse_importance(i)
+#     if importance == "important":
+#         query += "\"" + i + "\""
+#         query += "|"
+# query = query[:-1] + ""
+# print(query)
 # responses = scholarly.search_pubs(topics["College"][0] + " OR " + topics["Mental Health"][0])
 # scholarly.pprint(next(responses))
 # scholarly.pprint(next(responses))
-responses = scholarly.search_pubs(query)
-scholarly.pprint(next(responses))
+# responses = scholarly.search_pubs(query)
+# scholarly.pprint(next(responses))
