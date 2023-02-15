@@ -11,30 +11,21 @@ usual precedence, although && is still higher in precedence than OR, and presuma
 
 Limit search to 2003-2023.
 """
-
+from time import sleep
 from scholarly import scholarly
 from search_integration_tools import read_topics_from_file, parse_importance, radial_queries
 
-print(*radial_queries("keywords_new.txt"), sep="\n")
+queries = radial_queries("keywords_new.txt")
 
-# topics = read_topics_from_file("keywords_new.txt")
-# print(*[i + ":" + str(topics[i]) + "\n" for i in topics])
+with open("out", "w") as f:
+    for i in queries:
+        f.write(i + "\n")
 
-# query = ""
-# for i in topics["Mental Health"]:
-#     i, importance = parse_importance(i)
-#     if importance == "important":
-#         query += "\"" + i + "\""
-#         query += "|"
-# query = query[:-1] + " AND "
-# for i in topics["College"]:
-#     i, importance = parse_importance(i)
-#     if importance == "important":
-#         query += "\"" + i + "\""
-#         query += "|"
-# query = query[:-1] + ""
-# print(query)
-# responses = scholarly.search_pubs(topics["College"][0] + " OR " + topics["Mental Health"][0])
+print(len(queries))
+responses = scholarly.search_pubs(queries[0])
+for i in range(2):
+    responses = scholarly.search_pubs(queries[0])
+    sleep(1.23562)
 # scholarly.pprint(next(responses))
 # scholarly.pprint(next(responses))
 # responses = scholarly.search_pubs(query)
