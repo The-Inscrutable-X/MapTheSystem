@@ -19,9 +19,11 @@ only problem that was pointed out by Riley:
 tag search. See the Search Syntax for details. More than one tag may be passed by passing a list of strings – These are treated as AND search terms, meaning only items which include all of the specified tags are returned. You can search for items matching any tag in a list by using OR: "tag1 OR tag2", and all items which exclude a tag: "-tag".
 """
 import pprint
+import json
 from time import sleep
 from scholarly import scholarly
 from search_integration_tools import read_topics_from_file, parse_importance, radial_queries
+from zotero_integration_tools import add_to_zotero
 
 queries = radial_queries("keywords_new.txt")
 
@@ -33,14 +35,26 @@ print(len(queries))
 
 """This section handles getting and storing found publications from google scholar."""
 publications = []
-for i in range(1):
+for i in range(2):
     response_object = scholarly.search_pubs(queries[i])
     publications.append(next(response_object))
+    print("-")
     sleep(1.23562)
 
 with open("publications.txt", "w") as f:
     f.write(pprint.pformat(publications[0]))
+    # my_json = json.dumps(publications[0])
+    # f.write(my_json)
     pass
+
+for x, i in enumerate(publications):
+    add_to_zotero(i, queries[x])
+
+# with open("publications_storage.txt", "w") as f:
+#     # f.write(pprint.pformat(publications[0]))
+#     my_json = json.dumps(publications[0])
+#     f.write(my_json)
+#     pass
 # scholarly.pprint(next(responses))
 # scholarly.pprint(next(responses))
 # responses = scholarly.search_pubs(query)

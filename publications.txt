@@ -13,9 +13,9 @@
  'eprint_url': 'https://link.springer.com/article/10.1007/s10597-016-9987-4',
  'filled': False,
  'gsrank': 1,
- 'num_citations': 161,
+ 'num_citations': 163,
  'pub_url': 'https://link.springer.com/article/10.1007/s10597-016-9987-4',
  'source': <PublicationSource.PUBLICATION_SEARCH_SNIPPET: 'PUBLICATION_SEARCH_SNIPPET'>,
- 'url_add_sclib': '/citations?hl=en&xsrf=&continue=/scholar%3Fq%3DBehavioral%2BHealth%2BAND%2B%2522Undergraduate%2522%257C%2522College%2522%257C%2522Campus%2522%26hl%3Den%26as_sdt%3D0,33&citilm=1&update_op=library_add&info=kYSi5i6LJzkJ&ei=MkftY9ChK73GsQLgz6WQAw&json=',
+ 'url_add_sclib': '/citations?hl=en&xsrf=&continue=/scholar%3Fq%3DBehavioral%2BHealth%2BAND%2B%2522Undergraduate%2522%257C%2522College%2522%257C%2522Campus%2522%26hl%3Den%26as_sdt%3D0,33&citilm=1&update_op=library_add&info=kYSi5i6LJzkJ&ei=LHP1Y8DQNtClmAGDo7EI&json=',
  'url_related_articles': '/scholar?q=related:kYSi5i6LJzkJ:scholar.google.com/&scioq=Behavioral+Health+AND+%22Undergraduate%22%7C%22College%22%7C%22Campus%22&hl=en&as_sdt=0,33',
  'url_scholarbib': '/scholar?hl=en&q=info:kYSi5i6LJzkJ:scholar.google.com/&output=cite&scirp=0&hl=en'}
