@@ -32,10 +32,20 @@ zot = zotero.Zotero("4939465", "group", "MLD9GooAjlNi3H5XdkW7dijP")
 def add_to_zotero(scholarly_json, query, collection_key = "AFMZXANB"):
     """Grab a scholarly response and add it to a particular collection with a tag that 
     cooresponds to the google scholar query that produced it."""
+    if isinstance(query, list):
+        amount = 0
+        for i in query:
+            pass
+
+    print(scholarly_json["bib"]["pub_year"])
+    if int(scholarly_json["bib"]["pub_year"]) < 2003:  # Catch a published too early to be relevent error.
+        print(scholarly_json["bib"]["title"], "was published before 2003 on", scholarly_json["bib"]["pub_year"])
+        return
     template = zot.item_template('JournalArticle')
     template["title"] = scholarly_json["bib"]["title"]
     template["url"] = scholarly_json["pub_url"]
     template["publicationTitle"] = scholarly_json["bib"]["venue"]
+    # template["date"] = scholarly_json["bib"]["pub_year"]
     resp = zot.create_items([template])
     item_key = resp["successful"]["0"]["key"]
     print(item_key)

@@ -1,6 +1,6 @@
 ----Mental Health 
 
-Behavioral Health !
+Behavioral Health
 
 Mental Health !
 
@@ -8,7 +8,7 @@ Mental health outcomes
 
 Mental health conditions 
 
-Mental Illness !
+Mental Illness
 
 Mental Wellbeing 
 

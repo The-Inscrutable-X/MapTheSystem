@@ -31,24 +31,26 @@ with open("out", "w") as f:
     for i in queries:
         f.write(i + "\n")
 
-print(len(queries))
+# print(len(queries))
 
 """This section handles getting and storing found publications from google scholar."""
 publications = []
-for i in range(2):
+for i in range(8,9):
+    print("Searching under the query", queries[i])
     response_object = scholarly.search_pubs(queries[i])
-    publications.append(next(response_object))
+    publications.append((next(response_object), queries[i]))
     print("-")
     sleep(1.23562)
 
-with open("publications.txt", "w") as f:
-    f.write(pprint.pformat(publications[0]))
-    # my_json = json.dumps(publications[0])
-    # f.write(my_json)
+with open("publications_storage.txt", "w") as f:
+    for i, q in publications:
+        # f.write(pprint.pformat(publications[i]))
+        my_json = json.dumps(i)
+        f.write(my_json)
     pass
 
-for x, i in enumerate(publications):
-    add_to_zotero(i, queries[x])
+for i, q in publications:
+    add_to_zotero(i, q)
 
 # with open("publications_storage.txt", "w") as f:
 #     # f.write(pprint.pformat(publications[0]))

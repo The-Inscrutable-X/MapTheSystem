@@ -45,7 +45,7 @@ def radial_queries(filename: str):
     queries: list = []
     for keyword in topics["Mental Health"]:
         keyword, importance = parse_importance(keyword)
-        if importance == "important":
+        if importance == "important" or importance == "normal":
             query = keyword + " AND "
             query += or_together(topics, "College", "important")
             queries.append(query)
