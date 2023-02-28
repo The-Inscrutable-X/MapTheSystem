@@ -53,4 +53,59 @@ def add_to_zotero(scholarly_json, query, collection_key = "AFMZXANB"):
     success = zot.addto_collection(collection_key, zot.item(item_key))
     print(success)
 
+def mass_read(queries, stop):
+    """Reads all json publications for every query up to the query index specified in 'stop'."""
+    publications = dict()
+    for i in range(len(queries)):
+        if i == stop: break
+        publications[queries[i]] = list()
+        with open(f"No.{i}_query_results.txt", "r") as f:  #FHook1
+            publications[queries[i]] = [json.loads(i.strip()) for i in f.readlines()[1:]]
+    return publications
+
+def mass_add_to_zotero(publications, collection_key = "AFMZXANB"):
+    """Grab a scholarly response and add it to a particular collection with a tag that 
+    cooresponds to the google scholar query that produced it."""
+    
+    for query in publications:
+        templates = list()
+        count = 0
+        for scholarly_json in publications[query]:
+            if query == '"Behavioral Health" AND "Undergraduate"|"College"|"Campus"':
+                print("yes", query)
+            if int(scholarly_json["bib"]["pub_year"]) < 2003:  # Catch a published too early to be relevent error.
+                print(scholarly_json["bib"]["title"], "was published before 2003 on", scholarly_json["bib"]["pub_year"])
+                return
+            template = zot.item_template('JournalArticle')
+            template["title"] = scholarly_json["bib"]["title"]
+            template["url"] = scholarly_json["pub_url"]
+            template["publicationTitle"] = scholarly_json["bib"]["venue"]
+            template["date"] = scholarly_json["bib"]["pub_year"]
+            # template["creators"][0]["creatorType"] = "author"
+            # template["creators"][0]["firstName"] = "MTSLitScraper"
+            templates.append(template)
+            count += 1
+            # template["date"] = scholarly_json["bib"]["pub_year"]
+            if count >= 49:
+                resp = zot.create_items(templates)  #FHook2
+                for i in range(count):
+                    item_key = resp["successful"][str(i)]["key"]
+                    print(f"{i}th Added Item to {query}", item_key)
+                    zot.add_tags(zot.item(item_key), query)
+                    success = zot.addto_collection(collection_key, zot.item(item_key))
+                    print(success)
+                templates = list()
+                count = 0
+        resp = zot.create_items(templates)  #FHook2
+        # print(resp)
+        for i in range(count):
+            item_key = resp["successful"][str(i)]["key"]
+            print(i)
+            print(f"{i}th Added Item to {query}", item_key)
+            zot.add_tags(zot.item(item_key), query)
+            success = zot.addto_collection(collection_key, zot.item(item_key))
+            print(success)
+        templates = list()
+        count = 0
+
 # add_to_zotero(pub, "TEST|query")

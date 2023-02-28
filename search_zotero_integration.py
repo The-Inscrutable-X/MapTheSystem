@@ -22,13 +22,22 @@ import pprint
 import json
 from time import sleep
 from scholarly import scholarly
-from search_integration_tools import read_topics_from_file, parse_importance, radial_queries
-from zotero_integration_tools import add_to_zotero
+from search_integration_tools import radial_queries, process_x_queries, read_queries_and_numbers
+from zotero_integration_tools import add_to_zotero, mass_read, mass_add_to_zotero
 
 """This section generates requisite quries and stores them."""
-queries = radial_queries("keywords_new.txt")
+if False:
+    queries = radial_queries("keywords_new.txt")
 
-with open("out", "w") as f:
-    for i in queries:
-        f.write(i + "\n")
-        
+    with open("out", "w") as f:
+        for i in queries:
+            f.write(i + "\n")
+
+queries, numbers = read_queries_and_numbers()
+
+if False:
+    process_x_queries(2, 0, queries, numbers)
+
+publications = mass_read(queries, 2)
+
+mass_add_to_zotero(publications)

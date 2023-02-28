@@ -85,11 +85,8 @@ def radial_queries(filename: str):
     # query = query[:-1] + ""
     # print(query)
 
-def process_x_queries(x, startfrom_xth_query, queries_file = "queries.txt"):
-    """Processes x full queries. e.g. x = 2 might scan for 200 publications 
-    if you indicated you wanted 100 publications from each query. 
-    Searches are according to the number of publications you specified to search for 
-    under each query."""
+def read_queries_and_numbers(file = "queries.txt"):
+    """Reads queries and their matching amount of pubs you want to find."""
     with open("queries.txt") as f:
         lines = f.readlines()
         numbers = dict()
@@ -100,7 +97,13 @@ def process_x_queries(x, startfrom_xth_query, queries_file = "queries.txt"):
             query = match.group(2).strip()
             numbers[query] = int(number)
             queries.append(query)
-        # pprint.pprint(numbers)
+    return queries, numbers
+
+def process_x_queries(x, startfrom_xth_query, queries, numbers):
+    """Processes x full queries. e.g. x = 2 might scan for 200 publications 
+    if you indicated you wanted 100 publications from each query. 
+    Searches are according to the number of publications you specified to search for 
+    under each query."""
 
     """This section handles getting and storing found publications from google scholar. 
     It also sets up the scraper API integration to make sure we won't get blocked."""
@@ -123,7 +126,7 @@ def process_x_queries(x, startfrom_xth_query, queries_file = "queries.txt"):
             print("-")
             sleep(1.23562)
 
-        with open(f"No.{i}_query_results.txt", "w") as f:
+        with open(f"No.{i}_query_results.txt", "w") as f:  #FHook1
             f.write(str(numbers[queries[i]])+"\n")
             for i in publications:
                 # f.write(pprint.pformat(publications[i]))
@@ -132,4 +135,4 @@ def process_x_queries(x, startfrom_xth_query, queries_file = "queries.txt"):
             pass
 
 
-process_x_queries(2, 0)
+# process_x_queries(2, 0)
