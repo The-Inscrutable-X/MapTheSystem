@@ -25,39 +25,10 @@ from scholarly import scholarly
 from search_integration_tools import read_topics_from_file, parse_importance, radial_queries
 from zotero_integration_tools import add_to_zotero
 
+"""This section generates requisite quries and stores them."""
 queries = radial_queries("keywords_new.txt")
 
 with open("out", "w") as f:
     for i in queries:
         f.write(i + "\n")
-
-# print(len(queries))
-
-"""This section handles getting and storing found publications from google scholar."""
-publications = []
-for i in range(8,9):
-    print("Searching under the query", queries[i])
-    response_object = scholarly.search_pubs(queries[i])
-    publications.append((next(response_object), queries[i]))
-    print("-")
-    sleep(1.23562)
-
-with open("publications_storage.txt", "w") as f:
-    for i, q in publications:
-        # f.write(pprint.pformat(publications[i]))
-        my_json = json.dumps(i)
-        f.write(my_json)
-    pass
-
-for i, q in publications:
-    add_to_zotero(i, q)
-
-# with open("publications_storage.txt", "w") as f:
-#     # f.write(pprint.pformat(publications[0]))
-#     my_json = json.dumps(publications[0])
-#     f.write(my_json)
-#     pass
-# scholarly.pprint(next(responses))
-# scholarly.pprint(next(responses))
-# responses = scholarly.search_pubs(query)
-# scholarly.pprint(next(responses))
+        

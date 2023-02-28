@@ -1,0 +1,6 @@
+2	"Behavioral Health" AND "Undergraduate"|"College"|"Campus"		
+2	"Mental Health" AND "Undergraduate"|"College"|"Campus"		
+3	"Mental health outcomes" AND "Undergraduate"|"College"|"Campus"		
+3	"Mental health conditions" AND "Undergraduate"|"College"|"Campus"		
+3	"Mental Illness" AND "Undergraduate"|"College"|"Campus"		
+3	"Mental Wellbeing" AND "Undergraduate"|"College"|"Campus"
