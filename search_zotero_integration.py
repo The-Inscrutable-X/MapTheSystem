@@ -32,12 +32,13 @@ if False:
     with open("out", "w") as f:
         for i in queries:
             f.write(i + "\n")
+if True:
+    queries, numbers = read_queries_and_numbers()
 
-queries, numbers = read_queries_and_numbers()
+if True:
+    process_x_queries(10, 35, queries, numbers)
 
 if False:
-    process_x_queries(2, 0, queries, numbers)
+    publications = mass_read(queries, 45, 48)
 
-publications = mass_read(queries, 2)
-
-mass_add_to_zotero(publications)
+    mass_add_to_zotero(publications)

@@ -66,7 +66,7 @@ def radial_queries(filename: str):
     for optional in topics["Access"] + topics["Stakeholders"] + topics["Current Institutions Helping"] + topics["Specific Causes"]:
         optional, importance = parse_importance(optional)
         if importance == "normal" or importance == "important":
-            optional_query = base_query + " AND " + optional
+            optional_query = base_query + " AND " + "\"" + optional + "\""
             queries.append(optional_query)
 
     return queries
@@ -124,13 +124,13 @@ def process_x_queries(x, startfrom_xth_query, queries, numbers):
             source["query"] = queries[i]
             publications.append(source)
             print("-")
-            sleep(1.23562)
+            sleep(0.23562)
 
         with open(f"No.{i}_query_results.txt", "w") as f:  #FHook1
             f.write(str(numbers[queries[i]])+"\n")
-            for i in publications:
+            for k in publications:
                 # f.write(pprint.pformat(publications[i]))
-                my_json = json.dumps(i)
+                my_json = json.dumps(k)
                 f.write(my_json+"\n")
             pass
 
