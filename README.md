@@ -2,7 +2,10 @@
 
 Goal: Enable massive and comprehensive literary search by searching multiple sources (peer reviewed papars, editorials, social media, papers in other languages, etc) for a list of topics and compiling the results in a zotero database. The Journal of Medical Internet Research (JMIR) has many examples of people who may find this tool useful in literary search.
 
-Notes: Automatically return results from keywords and scrape their PMIDs or other IDs. Python Ebscohost discovery API may be used (account needed); Google scholar may be used (more work needed with scholarly and ScraperAPI) Use IDs to automatically populate zotero database.
+Implementation Notes:
+Automatically return results from keywords and scrape their PMIDs or other IDs. 
+Python Ebscohost discovery API may be used (account needed); Google scholar may be used (more work needed with scholarly and ScraperAPI)
+Use IDs to automatically populate zotero database. 
 
 Google Scholar Problems. Google scholar is not very accepting of long queries. Boolean Expressions cannot incorporate parantheses. | is used instead of OR to serve as a sort of pseduo parathesis based on order of operations, it seems to have a limited but observable effect.
 
