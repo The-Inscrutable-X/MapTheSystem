@@ -25,9 +25,11 @@ from scholarly import scholarly
 from search_integration_tools import radial_queries, process_x_queries, read_queries_and_numbers
 from zotero_integration_tools import add_to_zotero, mass_read, mass_add_to_zotero
 
-"""This section generates requisite quries and stores them."""
+# This code block is responsible for generating queries based on a list of keywords in a file called
+# "keywords_new.txt". The radial_queries function takes in the file name and generates a list of
+# queries based on the keywords. These queries are then written to a file called "out".
 if False:
-    queries = radial_queries("keywords_new.txt")
+    queries = radial_queries("keywords.txt")
 
     with open("out", "w") as f:
         for i in queries:
@@ -35,10 +37,10 @@ if False:
 if True:
     queries, numbers = read_queries_and_numbers()
 
-if True:
-    process_x_queries(10, 35, queries, numbers)
-
 if False:
-    publications = mass_read(queries, 45, 48)
+    process_x_queries(35, 0, queries, numbers)
+
+if True:
+    publications = mass_read(queries, 0, 35)
 
     mass_add_to_zotero(publications)

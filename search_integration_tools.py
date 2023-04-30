@@ -85,7 +85,7 @@ def radial_queries(filename: str):
     # query = query[:-1] + ""
     # print(query)
 
-def read_queries_and_numbers(file = "queries.txt"):
+def read_queries_and_numbers(file = "weighted_queries.txt"):
     """Reads queries and their matching amount of pubs you want to find."""
     with open("queries.txt") as f:
         lines = f.readlines()
@@ -111,7 +111,7 @@ def process_x_queries(x, startfrom_xth_query, queries, numbers):
     from scholarly import scholarly, ProxyGenerator
 
     pg = ProxyGenerator()
-    success = pg.ScraperAPI("86de3e274ab2ae881c6a803df2e90720", premium=False)
+    success = pg.ScraperAPI("bb352d5ec00ecbb6e8722f36df3a1e0f", premium=False)  # old key from hanqixiao.personal "86de3e274ab2ae881c6a803df2e90720" Was unable to access trial call.s
     print(success)
     scholarly.use_proxy(pg)
     for i in range(startfrom_xth_query, startfrom_xth_query+x):

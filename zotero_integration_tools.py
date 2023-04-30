@@ -82,21 +82,25 @@ def mass_add_to_zotero(publications, collection_key = "AFMZXANB"):
         count = 0
         shortened_query = query_to_tag(query)
         for scholarly_json in publications[query]:
-            if query == '"Behavioral Health" AND "Undergraduate"|"College"|"Campus"':
-                print("testing", query)
-            if int(scholarly_json["bib"]["pub_year"]) < 2003:  # Catch a published too early to be relevent error.
+            if scholarly_json["bib"]["pub_year"] == "NA":
+                scholarly_json["bib"]["pub_year"] = "3000"
+            if int(scholarly_json["bib"]["pub_year"]) < 2000:  # Catch a published too early to be relevent error.
                 print(scholarly_json["bib"]["title"], "was published before 2003 on", scholarly_json["bib"]["pub_year"])
                 continue
-            template = zot.item_template('JournalArticle')
-            template["title"] = scholarly_json["bib"]["title"]
-            template["url"] = scholarly_json["pub_url"]
-            template["publicationTitle"] = scholarly_json["bib"]["venue"]
-            template["date"] = scholarly_json["bib"]["pub_year"]
+            try:
+                template = zot.item_template('JournalArticle')
+                template["title"] = scholarly_json["bib"]["title"]
+                template["url"] = scholarly_json["pub_url"]
+                template["publicationTitle"] = scholarly_json["bib"]["venue"]
+                template["date"] = scholarly_json["bib"]["pub_year"]
             # template["creators"][0]["creatorType"] = "author"
             # template["creators"][0]["firstName"] = "MTSLitScraper"
-            templates.append(template)
-            count += 1
-            if count >= 49:
+                templates.append(template)
+                count += 1
+            except Exception as e:
+                print("ERROR ON", query, "Error is", repr(e))
+                continue
+            if count >= 47:
                 resp = zot.create_items(templates)  #FHook2
                 for i in range(count):
                     item_key = resp["successful"][str(i)]["key"]
