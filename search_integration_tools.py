@@ -7,6 +7,15 @@ from scholarly import scholarly
 # from zotero_integration_tools import add_to_zotero
 
 def read_topics_from_file(file_path):
+    """
+    This function reads topics and their associated content from a file and returns them as a
+    dictionary.
+    
+    :param file_path: The file path is a string that specifies the location of the file that contains
+    the topics and their associated subtopics
+    :return: The function `read_topics_from_file` returns a dictionary where the keys are the topics and
+    the values are lists of strings representing the subtopics under each topic.
+    """
     topics = {}
     with open(file_path, "r") as file:
         current_topic = None
@@ -25,6 +34,16 @@ def read_topics_from_file(file_path):
 
 
 def parse_importance(keyword: str):
+    """
+    The above code contains two functions, `radial_queries` and `read_queries_and_numbers`, which are
+    used to generate and read queries for a research project.
+    
+    :param keyword: A string representing a keyword or topic
+    :type keyword: str
+    :return: The functions `radial_queries` and `read_queries_and_numbers` are returning a list of
+    strings (queries) and a tuple of a list of strings (queries) and a dictionary (numbers)
+    respectively.
+    """
     for i in keyword:
         if i == "!":
             return (keyword.replace("!", "").strip(), "important")
@@ -35,6 +54,20 @@ def parse_importance(keyword: str):
 
 
 def or_together(topics: dict, topic: str, filter = True):
+    """
+    This is a function definition in Python that takes in a dictionary of topics, a specific topic, and
+    an optional filter parameter.
+    
+    :param topics: A dictionary containing topic names as keys and lists of strings as values. Each list
+    contains the words associated with the corresponding topic
+    :type topics: dict
+    :param topic: a string representing the topic to be searched in the dictionary
+    :type topic: str
+    :param filter: The "filter" parameter is a boolean value that determines whether or not the function
+    should filter out the topic being passed in from the dictionary of topics before performing the OR
+    operation. If set to True (default), the function will exclude the topic being passed in from the OR
+    operation. If set to False, defaults to True (optional)
+    """
     query: str = ""
     for i in topics[topic]:
         i, importance = parse_importance(i)
@@ -46,6 +79,15 @@ def or_together(topics: dict, topic: str, filter = True):
 
 
 def radial_queries(filename: str):
+    """
+    The function generates a list of queries related to mental health and college, as well as other
+    optional topics, based on keywords parsed from a given file.
+    
+    :param filename: The name of the file containing the topics and their importance levels
+    :type filename: str
+    :return: The function `radial_queries` returns a list of queries related to mental health and
+    college, as well as other optional topics, parsed from a file.
+    """
     topics = read_topics_from_file(filename)
 
     # all queries relating to just mental health and college, with various different words
@@ -70,20 +112,6 @@ def radial_queries(filename: str):
             queries.append(optional_query)
 
     return queries
-    # query = ""
-    # for i in topics["Mental Health"]:
-    #     i, importance = parse_importance(i)
-    #     if importance == "important":
-    #         query += "\"" + i + "\""
-    #         query += "|"
-    # query = query[:-1] + " AND "
-    # for i in topics["College"]:
-    #     i, importance = parse_importance(i)
-    #     if importance == "important":
-    #         query += "\"" + i + "\""
-    #         query += "|"
-    # query = query[:-1] + ""
-    # print(query)
 
 def read_queries_and_numbers(file = "weighted_queries.txt"):
     """Reads queries and their matching amount of pubs you want to find."""

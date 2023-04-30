@@ -30,7 +30,7 @@ zot = zotero.Zotero("4939465", "group", "MLD9GooAjlNi3H5XdkW7dijP")
 
 
 def query_to_tag(query: str) -> str:
-    """Queries are too long to be useful as tags, shorten them down to their specific topics."""
+    """Queries are too long to be useful as tag in zotero, shorten them down to their specific topics."""
     query = query.split(" AND ")
     tag: str = str()
     if len(query) <= 2:
