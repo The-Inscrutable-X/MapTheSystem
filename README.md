@@ -13,6 +13,6 @@ Use IDs to automatically populate zotero database.
 
 The 51 subtopics are available for review in the "weighted_queries.txt" file.
 
-Google scholar api node: boolean expressions cannot incorporate parantheses. "|" is used instead of "OR" to preserve order of operations.
+Google scholar api notes: boolean expressions cannot incorporate parantheses. "|" is used instead of "OR" to preserve order of operations.
 
 Limited search to 2000-2023 to produce relevant data.
