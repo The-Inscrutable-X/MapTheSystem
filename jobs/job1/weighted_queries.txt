@@ -1,5 +1,5 @@
-40	"Behavioral Health" AND "Undergraduate"|"College"|"Campus"	
-100	"Mental Health" AND "Undergraduate"|"College"|"Campus"	
+40  "Behavioral Health" AND "Undergraduate"|"College"|"Campus"	
+100 "Mental Health" AND "Undergraduate"|"College"|"Campus"	
 40	"Mental health outcomes" AND "Undergraduate"|"College"|"Campus"	
 40	"Mental health conditions" AND "Undergraduate"|"College"|"Campus"	
 100	"Mental Illness" AND "Undergraduate"|"College"|"Campus"	

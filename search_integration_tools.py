@@ -3,6 +3,7 @@ import pprint
 import json
 from time import sleep
 from scholarly import scholarly
+from query_tree_utilities import QueryNode, QueryTree
 # from search_integration_tools import read_topics_from_file, parse_importance, radial_queries
 # from zotero_integration_tools import add_to_zotero
 
@@ -77,6 +78,27 @@ def or_together(topics: dict, topic: str, filter = True):
     query = query[:-1]
     return query
 
+def parse_keywords(filename: str):
+    tree = QueryTree()
+    tree.parse_keywords(filename)
+    return tree
+    # for line in text.strip().split("\n"):
+    #     if line.startswith(":CONSTRAINT"):
+    #         current_constraint = re.search(r'-name <(.*?)>', line).group(1)
+    #         parsed_data[current_constraint] = []
+    #     elif line.startswith(":ROTATING_CONSTRAINT"):
+    #         current_rotating_constraint = re.search(r'-name <(.*?)>', line).group(1)
+    #         parsed_data[current_rotating_constraint] = {'SUBTOPICS': {}}
+    #     elif line.startswith(":SUBTOPICS"):
+    #         strength = re.search(r'-strength (\d+)', line).group(1)
+    #         parsed_data[current_rotating_constraint]['strength'] = strength
+    #     else:
+    #         if current_rotating_constraint:
+    #             parsed_data[current_rotating_constraint].append(line.strip())
+    #         else:
+    #             parsed_data[current_constraint].append(line.strip())
+                
+    # return parsed_data
 
 def radial_queries(filename: str):
     """
@@ -93,18 +115,21 @@ def radial_queries(filename: str):
     # all queries relating to just mental health and college, with various different words
     # for mental health highlighted.
     queries: list = []
-    for keyword in topics["Mental Health"]:
+    for keyword in topics["CONSTRAINT A"]:
         keyword, importance = parse_importance(keyword)
         if importance == "important" or importance == "normal":
             query =  "\"" + keyword + "\"" + " AND "
-            query += or_together(topics, "College", "important")
+            query += or_together(topics, "CONSTRAINT B", "important")
             queries.append(query)
 
+    
+    # all queries in general
     base_query = \
-    or_together(topics, "Mental Health", "important")\
+    or_together(topics, "CONSTRAINT A", "important")\
     + " AND " \
-    + or_together(topics, "College", "important")
+    + or_together(topics, "CONSTRAINT B", "important")
 
+    # Edit subqueries inclusion
     for optional in topics["Access"] + topics["Stakeholders"] + topics["Current Institutions Helping"] + topics["Specific Causes"]:
         optional, importance = parse_importance(optional)
         if importance == "normal" or importance == "important":
@@ -115,7 +140,7 @@ def radial_queries(filename: str):
 
 def read_queries_and_numbers(file = "weighted_queries.txt"):
     """Reads queries and their matching amount of pubs you want to find."""
-    with open("queries.txt") as f:
+    with open(file) as f:
         lines = f.readlines()
         numbers = dict()
         queries = list()

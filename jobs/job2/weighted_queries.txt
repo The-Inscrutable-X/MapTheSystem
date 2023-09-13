@@ -1,0 +1,7 @@
+1"Bias"|"Politicized"|"Political" AND "Judicial"|"Judicial Branch"|"Judiciary" AND "Global Analysis"
+1"Bias"|"Politicized"|"Political" AND "Judicial"|"Judicial Branch"|"Judiciary" AND "Statistics"
+1"Bias"|"Politicized"|"Political" AND "Judicial"|"Judicial Branch"|"Judiciary" AND "Statistical Analysis"
+1"Bias"|"Politicized"|"Political" AND "Judicial"|"Judicial Branch"|"Judiciary" AND "USA"|"American"|"United States of America" AND "Supreme Court"
+1"Bias"|"Politicized"|"Political" AND "Judicial"|"Judicial Branch"|"Judiciary" AND "USA"|"American"|"United States of America" AND "citizens"
+1"Bias"|"Politicized"|"Political" AND "Judicial"|"Judicial Branch"|"Judiciary" AND "Israel"|"Syria"|"Palestine"|"Middle East" AND "religion"
+1"Bias"|"Politicized"|"Political" AND "Judicial"|"Judicial Branch"|"Judiciary" AND "Israel"|"Syria"|"Palestine"|"Middle East" AND "affirmative action"

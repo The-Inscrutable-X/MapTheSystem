@@ -1,0 +1,70 @@
+:CONSTRAINT -name <Bias>
+
+Bias 
+Politicized
+Political
+
+    :CONSTRAINT -name <Judicial>
+
+    Judicial  
+    Judicial Branch
+    Judiciary
+
+        :SUBTOPICS -name <Global> -strength 10
+
+        Global Analysis
+
+        :SUBTOPICS -name <Effects> -strength 10
+
+        Statistics
+        Statistical Analysis
+
+        :CONSTRAINT -name <In USA>
+
+        USA
+        American
+        United States of America
+
+            :SUBTOPICS -strength 5
+
+            --Cases
+            Supreme Court
+            State Court
+            District Court
+            Circuit Court
+
+            --Causes
+            ideology
+            re-election
+            polarization
+            abortion
+            gay marriage
+            affirmative action
+            gun rights
+            packing the court
+
+            --Attempts to address
+            Pillars of Democracy
+
+            --Stakeholders
+            judges
+            Community
+            citizens
+
+        :CONSTRAINT -name <In Middle East>
+
+        Israel
+        Syria
+        Palestine
+        Middle East
+
+            :SUBTOPICS -strength 5
+
+            --Causes
+            religion
+            history
+            ideology
+            polarization
+            abortion
+            gay marriage
+            affirmative action    
