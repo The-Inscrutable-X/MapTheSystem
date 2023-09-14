@@ -4,6 +4,7 @@ import json
 from time import sleep
 from scholarly import scholarly
 from query_tree_utilities import QueryNode, QueryTree
+import os
 # from search_integration_tools import read_topics_from_file, parse_importance, radial_queries
 # from zotero_integration_tools import add_to_zotero
 
@@ -138,8 +139,9 @@ def radial_queries(filename: str):
 
     return queries
 
-def read_queries_and_numbers(file = "weighted_queries.txt"):
+def read_queries_and_numbers(job_directory, file = "weighted_queries.txt"):
     """Reads queries and their matching amount of pubs you want to find."""
+    file = job_directory / file
     with open(file) as f:
         lines = f.readlines()
         numbers = dict()
@@ -152,7 +154,7 @@ def read_queries_and_numbers(file = "weighted_queries.txt"):
             queries.append(query)
     return queries, numbers
 
-def process_x_queries(x, startfrom_xth_query, queries, numbers):
+def process_x_queries(x, startfrom_xth_query, queries, numbers, job_directory: str):
     """Processes x full queries. e.g. x = 2 might scan for 200 publications 
     if you indicated you wanted 100 publications from each query. 
     Searches are according to the number of publications you specified to search for 
@@ -167,19 +169,23 @@ def process_x_queries(x, startfrom_xth_query, queries, numbers):
     success = pg.ScraperAPI("bb352d5ec00ecbb6e8722f36df3a1e0f", premium=False)  # old key from hanqixiao.personal "86de3e274ab2ae881c6a803df2e90720" Was unable to access trial call.s
     print(success)
     scholarly.use_proxy(pg)
+    if x > 0:
+        if not os.path.exists(job_directory / "results"):
+            os.mkdir(job_directory / "results")
     for i in range(startfrom_xth_query, startfrom_xth_query+x):
         print("Searching under the query", queries[i])
         response_object = scholarly.search_pubs(queries[i])
         publications = []
         for j in range(numbers[queries[i]]):
-            print("\r", j, f"/{numbers[queries[i]]}th query under", queries[i])
+            print("\r", j+1, f"/{numbers[queries[i]]}th query")
             source = next(response_object)
             source["query"] = queries[i]
             publications.append(source)
             print("-")
             sleep(0.23562)
-
-        with open(f"No.{i}_query_results.txt", "w") as f:  #FHook1
+        save_path = job_directory / "results" / f"No.{i}_query_results.txt"
+        with open(save_path, "w") as f:  #FHook1
+            f.write(queries[i]+"\n")
             f.write(str(numbers[queries[i]])+"\n")
             for k in publications:
                 # f.write(pprint.pformat(publications[i]))
