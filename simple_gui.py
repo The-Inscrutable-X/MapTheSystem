@@ -21,10 +21,10 @@ def search_zotero_integration(jobpath, process_queries=False, read_publications=
 
     if read_publications:
         queries, numbers = read_queries_and_numbers(jobpath)
-        process_x_queries(35, 0, queries, numbers, jobpath)
+        process_x_queries(100, 0, queries, numbers, jobpath)
 
     if add_to_zotero:
-        publications = mass_read(jobpath, 0, 1)
+        publications = mass_read(jobpath, 12, 13)
         zot = zotero.Zotero("5169855", "group", "1sBBLDs3c6BMvSPzSL8MqHmt")
         mass_add_to_zotero(zot, publications, collection_key="MWV58QF6")
 
@@ -47,6 +47,6 @@ def search_zotero_integration_app(jobpath):
     return iface
 
 if __name__ == '__main__':
-    jobpath = Path("jobs/job2")
+    jobpath = Path("jobs/job3")
     iface = search_zotero_integration_app(jobpath)
     iface.launch()

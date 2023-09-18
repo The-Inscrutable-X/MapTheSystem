@@ -30,7 +30,7 @@ from pyzotero import zotero
 # "keywords_new.txt". The radial_queries function takes in the file name and generates a list of
 # queries based on the keywords. These queries are then written to a file called "out".
 
-jobpath = Path("jobs/job2")
+jobpath = Path("jobs/job3")
 
 if False:
     parsed_tree = parse_keywords(jobpath / "keywords.txt")
