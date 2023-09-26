@@ -68,8 +68,8 @@ def mass_read(job_directory, start, stop):
     """Reads all json publications for every query up to the query index specified in 'stop'."""
     publications = dict()
     for i in range(start, stop):
-        # if not os.path.exists(job_directory / "results" / f"No.{i}_query_results.txt"):
-        #     break
+        if not os.path.exists(job_directory / "results" / f"No.{i}_query_results.txt"):
+            break
         with open(job_directory / "results" / f"No.{i}_query_results.txt", "r") as f:  #FHook1
             data = f.readlines()
             query = data[0]

@@ -154,7 +154,7 @@ def read_queries_and_numbers(job_directory, file = "weighted_queries.txt"):
             queries.append(query)
     return queries, numbers
 
-def process_x_queries(x, startfrom_xth_query, queries, numbers, job_directory: str):
+def process_x_queries(x, startfrom_xth_query, queries, numbers, job_directory: str, api_key: str):
     """Processes x full queries. e.g. x = 2 might scan for 200 publications 
     if you indicated you wanted 100 publications from each query. 
     Searches are according to the number of publications you specified to search for 

@@ -21,10 +21,10 @@ def search_zotero_integration(jobpath, process_queries=False, read_publications=
 
     if read_publications:
         queries, numbers = read_queries_and_numbers(jobpath)
-        process_x_queries(100, 0, queries, numbers, jobpath)
+        process_x_queries(500, 0, queries, numbers, jobpath, scraper_api_key="781b6194e388d47b470bc60b576cb5d8")
 
     if add_to_zotero:
-        publications = mass_read(jobpath, 12, 13)
+        publications = mass_read(jobpath, 0, 500)
         zot = zotero.Zotero("5169855", "group", "1sBBLDs3c6BMvSPzSL8MqHmt")
         mass_add_to_zotero(zot, publications, collection_key="MWV58QF6")
 
@@ -32,6 +32,7 @@ def search_zotero_integration_app(jobpath):
     process_queries = gr.inputs.Checkbox(label="Process Queries")
     read_publications = gr.inputs.Checkbox(label="Read Publications")
     add_to_zotero = gr.inputs.Checkbox(label="Add to Zotero")
+    # gr.inputs.Number(label="read_index")
 
     def run_pipeline(process_queries, read_publications, add_to_zotero):
         search_zotero_integration(jobpath, process_queries, read_publications, add_to_zotero)

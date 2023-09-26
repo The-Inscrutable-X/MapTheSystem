@@ -18,6 +18,15 @@ Behavioral Health
             Language Models
             Academic Stress
 
+        :SUBTOPICS detection
+        Detection
+        Screening
+
+        :SUBTOPICS response
+        Responses
+        Response Action
+        Remedial
+
     :CONSTRAINT detection
     Detection
     Screening
@@ -27,12 +36,3 @@ Behavioral Health
         Machine Learning
         Language Models
         Academic Stress
-
-    :SUBTOPICS detection
-    Detection
-    Screening
-
-    :SUBTOPICS response
-    Responses
-    Response Action
-    Remedial

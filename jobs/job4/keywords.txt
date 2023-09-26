@@ -1,0 +1,34 @@
+:CONSTRAINT mental health
+Mental Health
+Mental Illness
+Depression
+
+    :CONSTRAINT detection
+    Detection
+    Screening
+    Diagnosis
+
+        :CONSTRAINT social-media
+        Social Media
+        Internet
+
+            :SUBTOPICS
+            Aggression
+            Volatile
+            Violent Tendency
+            Abuse
+            Assault
+            Harm
+            Threat
+            Danger
+            Convicted 
+            Domestic violence
+
+        :SUBTOPICS social-media
+        Online Activity
+        Texting
+        Cyberbullying
+        False Positives/Negatives
+        Anonymity
+        Social Media
+        Online Forums
