@@ -12,23 +12,41 @@ Depression
         Social Media
         Internet
 
-            :SUBTOPICS
-            Aggression
-            Volatile
-            Violent Tendency
-            Abuse
-            Assault
-            Harm
-            Threat
-            Danger
-            Convicted 
-            Domestic violence
+            :CONSTRAINT AI
+            AI
+            NLP
+            Machine Learning
+
+                :SUBTOPICS 
+
+                Trauma"|"Schizophrenia"|"Bipolar Disorder"|"PTSD
+                
+                Aggression"|"Volatile"|"Violent Tendency"|"Assault
+
+                Unsupervised Learning
+
+                False Positives/Negatives
+                Privacy
+
+                Linguistic Analysis"|"Language Models
+                Papageno effect
+
+                Genetic algorithms
+                Anomaly Detection
+
+                Reddit
+                Instagram
+                Twitter
+                Facebook
+                TikTok
+                Snapchat
+                Clubhouse
+
+                International Students
+
+                AI"|"LLMs"|"Machine Learning
 
         :SUBTOPICS social-media
-        Online Activity
-        Texting
+        Online Activity"|"Texting
         Cyberbullying
-        False Positives/Negatives
-        Anonymity
-        Social Media
         Online Forums

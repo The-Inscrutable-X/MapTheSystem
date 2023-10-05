@@ -48,6 +48,6 @@ def search_zotero_integration_app(jobpath):
     return iface
 
 if __name__ == '__main__':
-    jobpath = Path("jobs/job3")
+    jobpath = Path("jobs/job4")
     iface = search_zotero_integration_app(jobpath)
     iface.launch()

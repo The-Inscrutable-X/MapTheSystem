@@ -131,9 +131,15 @@ class QueryTree():
         if cur.node_type == "SUBTOPICS":
             for i in cur.keywords:
                 if auto_strength:
-                    self.queries.append((str(cur.strength) + parent_query[5:] + ' AND ' + '"' + i + '"'))
+                    if i != "":
+                        self.queries.append((str(cur.strength) + parent_query[5:] + ' AND ' + '"' + i + '"'))
+                    else:
+                        self.queries.append((str(cur.strength) + parent_query[5:]))
                 else:
-                    self.queries.append((parent_query[5:] + ' AND ' + '"' + i + '"'))
+                    if i != "":
+                        self.queries.append((parent_query[5:] + ' AND ' + '"' + i + '"'))
+                    else:
+                        self.queries.append((parent_query[5:]))
             return
     
         for i in cur.childs:

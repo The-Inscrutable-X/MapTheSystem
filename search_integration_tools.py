@@ -154,7 +154,7 @@ def read_queries_and_numbers(job_directory, file = "weighted_queries.txt"):
             queries.append(query)
     return queries, numbers
 
-def process_x_queries(x, startfrom_xth_query, queries, numbers, job_directory: str, api_key: str):
+def process_x_queries(x, startfrom_xth_query, queries, numbers, job_directory: str, scraper_api_key: str):
     """Processes x full queries. e.g. x = 2 might scan for 200 publications 
     if you indicated you wanted 100 publications from each query. 
     Searches are according to the number of publications you specified to search for 
@@ -166,7 +166,7 @@ def process_x_queries(x, startfrom_xth_query, queries, numbers, job_directory: s
     from scholarly import scholarly, ProxyGenerator
 
     pg = ProxyGenerator()
-    success = pg.ScraperAPI("bb352d5ec00ecbb6e8722f36df3a1e0f", premium=False)  # old key from hanqixiao.personal "86de3e274ab2ae881c6a803df2e90720" Was unable to access trial call.s
+    success = pg.ScraperAPI(scraper_api_key, premium=False)  # old key from hanqixiao.personal "86de3e274ab2ae881c6a803df2e90720" Was unable to access trial call.s
     print(success)
     scholarly.use_proxy(pg)
     if x > 0:
