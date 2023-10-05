@@ -1,0 +1,52 @@
+:CONSTRAINT mental health
+Mental Health
+Mental Illness
+Depression
+
+    :CONSTRAINT detection
+    Detection
+    Screening
+    Diagnosis
+
+        :CONSTRAINT social-media
+        Social Media
+        Internet
+
+            :CONSTRAINT AI
+            AI
+            NLP
+            Machine Learning
+
+                :SUBTOPICS 
+
+                Trauma"|"Schizophrenia"|"Bipolar Disorder"|"PTSD
+                
+                Aggression"|"Volatile"|"Violent Tendency"|"Assault
+
+                Unsupervised Learning
+
+                False Positives/Negatives
+                Privacy
+
+                Linguistic Analysis"|"Language Models
+                Papageno effect
+
+                Genetic algorithms
+                Anomaly Detection
+
+                Reddit
+                Instagram
+                Twitter
+                Facebook
+                TikTok
+                Snapchat
+                Clubhouse
+
+                International Students
+
+                AI"|"LLMs"|"Machine Learning
+
+        :SUBTOPICS social-media
+        Online Activity"|"Texting
+        Cyberbullying
+        Online Forums

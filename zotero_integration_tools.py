@@ -1,12 +1,13 @@
 from pyzotero import zotero
 import pprint
 import json
+import os
 
 """
 The key of the automation directory is AFMZXANB
 """
 
-zot = zotero.Zotero("4939465", "group", "MLD9GooAjlNi3H5XdkW7dijP")
+# zot = zotero.Zotero("4939465", "group", "MLD9GooAjlNi3H5XdkW7dijP")
 
 # with open("publications_storage.txt") as f:  # Creates a sample scholarly output.
 #     pub = json.loads(f.read())  # stores it to pub
@@ -34,7 +35,7 @@ def query_to_tag(query: str) -> str:
     query = query.split(" AND ")
     tag: str = str()
     if len(query) <= 2:
-        tag = "Maj:" + query[0]
+        tag = "Maj:" + query[-1]
     else:
         tag = query[-1]
     return tag
@@ -63,17 +64,22 @@ def add_to_zotero(scholarly_json, query, collection_key = "AFMZXANB"):
     success = zot.addto_collection(collection_key, zot.item(item_key))
     print(success)
 
-def mass_read(queries, start, stop):
+def mass_read(job_directory, start, stop):
     """Reads all json publications for every query up to the query index specified in 'stop'."""
     publications = dict()
     for i in range(start, stop):
-        publications[queries[i]] = list()
-        with open(f"No.{i}_query_results.txt", "r") as f:  #FHook1
-            print(f"opening No.{i}_query_results.txt")
-            publications[queries[i]] = [json.loads(i.strip()) for i in f.readlines()[1:]]
+        if not os.path.exists(job_directory / "results" / f"No.{i}_query_results.txt"):
+            break
+        with open(job_directory / "results" / f"No.{i}_query_results.txt", "r") as f:  #FHook1
+            data = f.readlines()
+            query = data[0]
+            results = data[2:]
+            publications[query] = list()
+            print(f"opening {job_directory / 'results'} No.{i}_query_results.txt")
+            publications[query] = [json.loads(i.strip()) for i in results]
     return publications
 
-def mass_add_to_zotero(publications, collection_key = "AFMZXANB"):
+def mass_add_to_zotero(zot, publications, collection_key = "AFMZXANB"):
     """Grab a scholarly response and add it to a particular collection with a tag that 
     cooresponds to the google scholar query that produced it."""
     

@@ -22,25 +22,30 @@ import pprint
 import json
 from time import sleep
 from scholarly import scholarly
-from search_integration_tools import radial_queries, process_x_queries, read_queries_and_numbers
+from search_integration_tools import radial_queries, process_x_queries, read_queries_and_numbers, parse_keywords
 from zotero_integration_tools import add_to_zotero, mass_read, mass_add_to_zotero
-
+from pathlib import Path
+from pyzotero import zotero
 # This code block is responsible for generating queries based on a list of keywords in a file called
 # "keywords_new.txt". The radial_queries function takes in the file name and generates a list of
 # queries based on the keywords. These queries are then written to a file called "out".
-if False:
-    queries = radial_queries("keywords.txt")
 
-    with open("out", "w") as f:
-        for i in queries:
-            f.write(i + "\n")
-if True:
-    queries, numbers = read_queries_and_numbers()
+jobpath = Path("jobs/job3")
 
 if False:
-    process_x_queries(35, 0, queries, numbers)
+    parsed_tree = parse_keywords(jobpath / "keywords.txt")
+    parsed_tree.create_queries()
+    # print(*parsed_tree.queries, sep="\n")
+    parsed_tree.save_queries(jobpath / "queries")
+
+if False:
+    queries, numbers = read_queries_and_numbers(jobpath)
+
+    process_x_queries(35, 0, queries, numbers, jobpath)
 
 if True:
-    publications = mass_read(queries, 0, 35)
+    publications = mass_read(jobpath, 0, 1)
 
-    mass_add_to_zotero(publications)
+    zot = zotero.Zotero("5169855", "group", "1sBBLDs3c6BMvSPzSL8MqHmt")
+
+    mass_add_to_zotero(zot, publications, collection_key="MWV58QF6")

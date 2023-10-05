@@ -1,0 +1,37 @@
+:CONSTRAINT mental-health
+Mental Health
+Mental Illness
+Behavioral Health
+
+    :CONSTRAINT social-media
+    Social Media
+    Online Forums
+    Texting
+
+        :CONSTRAINT detection
+        Detection
+        Screening
+
+            :SUBTOPICS ai
+            AI
+            Machine Learning
+            Language Models
+            Academic Stress
+
+        :SUBTOPICS detection
+        Detection
+        Screening
+
+        :SUBTOPICS response
+        Responses
+        Response Action
+        Remedial
+
+    :CONSTRAINT detection
+    Detection
+    Screening
+
+        :SUBTOPICS ai
+        AI
+        Machine Learning
+        Language Models
