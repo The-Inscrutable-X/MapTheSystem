@@ -1,4 +1,1 @@
-:CONSTRAINT
-Twitter
-    :CONSTRAINT
-    Social Media
+"Twitter" AND "Social Media"

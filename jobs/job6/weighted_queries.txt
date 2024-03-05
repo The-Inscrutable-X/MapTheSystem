@@ -1,0 +1,8 @@
+7 "Major depressive disorder" AND "attentional bias” | “cognitive bias” | “attributional style” | “schema" AND "working memory” | “episodic memory"
+7 "Major depressive disorder" AND "attentional bias” | “cognitive bias” | “attributional style” | “schema" AND "social isolation” | “rejection sensitivity” | “social stress"
+7 "Major depressive disorder" AND "attentional bias” | “cognitive bias” | “attributional style” | “schema" AND "Rumination"
+7 "Major depressive disorder" AND "Rumination" AND "working memory” | “episodic memory"
+7 "Major depressive disorder" AND "Rumination" AND "social isolation” | “rejection sensitivity” | “social stress"
+7 "Major depressive disorder" AND "working memory” | “episodic memory" AND "social isolation” | “rejection sensitivity” | “social stress"
+7 "Major depressive disorder" AND "working memory” | “episodic memory" AND "financial stress” | “work stress” | “job loss” | “productivity"
+7 "Major depressive disorder" AND "social isolation” | “rejection sensitivity” | “social stress" AND "financial stress” | “work stress” | “job loss” | “productivity"

@@ -1,0 +1,24 @@
+:CONSTRAINT
+Major depressive disorder
+    :CONSTRAINT 
+    attentional bias” | “cognitive bias” | “attributional style” | “schema
+        :SUBTOPICS
+        Rumination
+        working memory” | “episodic memory
+        social isolation” | “rejection sensitivity” | “social stress
+        financial stress” | “work stress” | “job loss” | “productivity 
+    :CONSTRAINT
+    Rumination
+        :SUBTOPICS
+        working memory” | “episodic memory
+        social isolation” | “rejection sensitivity” | “social stress 
+        financial stress” | “work stress” | “job loss” | “productivity
+    :CONSTRAINT
+    working memory” | “episodic memory
+        :SUBTOPICS
+        social isolation” | “rejection sensitivity” | “social stress
+        financial stress” | “work stress” | “job loss” | “productivity
+    :CONSTRAINT
+    social isolation” | “rejection sensitivity” | “social stress
+        :SUBTOPICS
+        financial stress” | “work stress” | “job loss” | “productivity
